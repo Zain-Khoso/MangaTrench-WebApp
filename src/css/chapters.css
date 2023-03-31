@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    border: none;
+    outline: none;
+    margin: 0px;
+}
+
+body {
+    background-color: rgba(245, 222, 179, 0.258);
+    overflow-x: hidden;
+}
+
+main {
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.chpNum {
+    width: 40vw;
+    height: fit-content;
+    background-color: rgba(4, 88, 178, 0.599);
+    font-size: x-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    margin: 10px auto;
+    overflow: hidden;
+}
