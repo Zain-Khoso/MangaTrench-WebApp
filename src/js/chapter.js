@@ -19,7 +19,7 @@ async function dataLoader() {
     mangaHeading.textContent = `${getProperTitle(mangaName)} | ${getProperText(
         chapterNum
     )}`;
-    
+
     const pagesHolder = document.createElement("div");
     pagesHolder.id = "pages-holder";
     mainTag.appendChild(pagesHolder);

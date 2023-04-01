@@ -1,10 +1,17 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
 footer {
     width: 100%;
     height: fit-content;
     background-color: rgba(0, 0, 0, 0.716);
     padding: 20px;
     border: 1px solid black;
-    margin-top: 20px;
+    margin-top: auto;
     display: flex;
     align-items: center;
     flex-direction: column;

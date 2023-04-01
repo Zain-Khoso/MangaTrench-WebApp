@@ -3,12 +3,19 @@
 // DOM Selectors.
 const mainTag = document.getElementById("manga-list");
 const preloader = document.getElementById("preloader");
+const searchBtn = document.getElementById("search-btn");
+const searchEntry = document.getElementById("search-entry");
 
 // Functions.
 
 // This Function loops over the fetched data and one-by-one shows it on the page.
-async function dataLoader() {
+async function main() {
     data = await getMangaList();
+
+    // This Event Listener is for the Search Button.
+    searchBtn.addEventListener("click", () => {
+        searchForManga(data);
+    });
 
     for (manga of data) {
         mangaThumbnail = manga.thumbnail;
@@ -64,7 +71,7 @@ async function getMangaList() {
     return data;
 }
 
-// This function gives the manga name given to it proper casing.
+// This function returns the manga name given to it in upper case.
 function getProperTitle(mangaName) {
     const words = mangaName.split("-");
     let title = "";
@@ -76,4 +83,31 @@ function getProperTitle(mangaName) {
     return title.trim();
 }
 
-dataLoader();
+// This function returns the manga name given to it in kebab case.
+function getKebabTitle(mangaName) {
+    const words = mangaName.split(" ");
+    let title = "";
+
+    for (let word of words) {
+        title = title.concat("-", word.toLowerCase());
+    }
+
+    return title.slice(1);
+}
+
+// This Function searchs the fetched data for a particular manga.
+function searchForManga(data) {
+    const mangaName = getKebabTitle(searchEntry.value);
+
+    for (manga of data) {
+        if (manga.name == mangaName) {
+            mainTag.innerHTML = "";
+            mangaThumbnail = manga.thumbnail;
+            mangaTitle = manga.name;
+            mangaChpsNum = manga.chapters;
+            mangaCardGenerator(mangaThumbnail, mangaTitle, mangaChpsNum);
+        }
+    }
+}
+
+main();

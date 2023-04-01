@@ -13,8 +13,8 @@ const mangaName = new URLSearchParams(window.location.search).get("manga");
 // This Function loops over the fetched data and one-by-one shows it on the page.
 async function dataLoader() {
     data = await getChapterList();
-    
-    mangaHeading.textContent = getProperTitle(mangaName)
+
+    mangaHeading.textContent = getProperTitle(mangaName);
 
     for (chapterNum of data) {
         // Tag to hold the chapter number.
