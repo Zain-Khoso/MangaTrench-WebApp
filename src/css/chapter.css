@@ -16,21 +16,6 @@ main {
     overflow: hidden;
 }
 
-#chapter-header {
-    width: 100%;
-    height: fit-content;
-    background-color: aquamarine;
-    font-size: 30px;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    font-weight: 700;
-    text-align: left;
-    text-decoration: wavy;
-    padding: 10px 10px;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    margin: 10px 0px;
-}
-
 #pages-holder {
     width: 100%;
     height: fit-content;

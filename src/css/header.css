@@ -2,6 +2,7 @@ header {
     width: 100vw;
     height: fit-content;
     background-color: lightseagreen;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -22,6 +23,16 @@ header > a {
     text-decoration: none;
     letter-spacing: 1px;
     word-spacing: 5px;
+}
+
+header > h1 {
+    width: fit-content;
+    height: fit-content;
+    margin: auto 40px;
+    color: rgba(0, 0, 0, 0.956);
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 900;
 }
 
 .search-box {

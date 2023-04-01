@@ -2,6 +2,7 @@
 
 // DOM Selectors.
 const mainTag = document.getElementById("chapter-list");
+const mangaHeading = document.getElementById("manga-heading");
 const preloader = document.getElementById("preloader");
 
 // mangaName in the query parameters.
@@ -12,6 +13,8 @@ const mangaName = new URLSearchParams(window.location.search).get("manga");
 // This Function loops over the fetched data and one-by-one shows it on the page.
 async function dataLoader() {
     data = await getChapterList();
+    
+    mangaHeading.textContent = getProperTitle(mangaName)
 
     for (chapterNum of data) {
         // Tag to hold the chapter number.

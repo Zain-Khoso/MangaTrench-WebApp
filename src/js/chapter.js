@@ -2,6 +2,7 @@
 
 // DOM Selectors.
 const mainTag = document.getElementById("page-list");
+const mangaHeading = document.getElementById("manga-heading");
 const preloader = document.getElementById("preloader");
 
 // mangaName and chapterNum in the query parameters.
@@ -15,13 +16,10 @@ const chapterNum = params.get("chapter");
 async function dataLoader() {
     const data = await getPages();
 
-    const chpHeader = document.createElement("h2");
-    chpHeader.textContent = `${getProperTitle(
-        mangaName
-    )} , Chapter: ${chapterNum}`;
-    chpHeader.id = "chapter-header";
-    mainTag.appendChild(chpHeader);
-
+    mangaHeading.textContent = `${getProperTitle(mangaName)} | ${getProperText(
+        chapterNum
+    )}`;
+    
     const pagesHolder = document.createElement("div");
     pagesHolder.id = "pages-holder";
     mainTag.appendChild(pagesHolder);
