@@ -3,5 +3,10 @@
 import { Button } from '@/components/ui/button';
 
 export default function Home() {
-  return <Button onClick={() => console.log('Clicked')}>Click Me</Button>;
+  return (
+    <>
+      <h1>Hello World</h1>
+      <Button onClick={() => console.log('Clicked')}>Click Me</Button>
+    </>
+  );
 }
