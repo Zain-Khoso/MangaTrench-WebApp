@@ -43,7 +43,7 @@ export default async function Home() {
   return (
     <>
       <Navbar />
-      <main className="w-screen p-8 flex flex-wrap justify-between gap-4">
+      <main className="max-w-[100vw] p-8 flex flex-wrap justify-center items-center gap-12">
         {mangas.map((item) => (
           <Link href={`/${item.mangaName}`} key={item.id}>
             <Image

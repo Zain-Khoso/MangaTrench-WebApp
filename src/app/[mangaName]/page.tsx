@@ -29,11 +29,11 @@ export default async function MangaPage({ params: { mangaName } }: Props) {
   return (
     <>
       <Navbar />
-      <main className="max-w-[100vw] p-8 grid grid-cols-8 gap-4 place-items-center">
+      <main className="max-w-[100vw] p-8 flex flex-wrap justify-center items-center gap-4 place-items-center">
         {chapters.map((item) => (
           <Link
             href={`/${mangaName}/chapter/${item.chapterNumber}`}
-            key={`/${mangaName}/chapter/${item.chapterNumber}`}
+            key={item.id}
             className="bg-teal-800 text-white px-12 py-2 rounded"
           >
             Chapter {item.chapterNumber}
