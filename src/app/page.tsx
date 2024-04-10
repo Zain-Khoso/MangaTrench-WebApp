@@ -23,7 +23,7 @@ export default async function Home() {
   try {
     await connectToDatabase();
   } catch {
-    throw new Error('Unable to connect to database.');
+    throw new Error(Errors.UNABLE_TO_CONNECT_TO_MONGODB);
   }
 
   // Getting the name and cover of each available manga.
