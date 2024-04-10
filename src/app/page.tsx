@@ -1,13 +1,21 @@
 // Lib Imports.
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
 // Local Imports.
+import Navbar from '@/components/Navbar';
 import {
   connectToDatabase,
   getCollectionNames,
   getModel,
 } from '@/libs/dbClient';
+
+// Metadata
+export const metadata: Metadata = {
+  title: 'Manga Trench',
+  description: 'Read popular manga online for free.',
+};
 
 // Component.
 export default async function Home() {
@@ -33,17 +41,20 @@ export default async function Home() {
   );
 
   return (
-    <main className="w-screen p-8 flex flex-wrap justify-between gap-4">
-      {mangas.map((item) => (
-        <Link href={`/${item.mangaName}`} key={item.id}>
-          <Image
-            alt="Manga Cover"
-            src={item.mangaCover || '/icons/icon.ico'}
-            width={250}
-            height={400}
-          />
-        </Link>
-      ))}
-    </main>
+    <>
+      <Navbar />
+      <main className="w-screen p-8 flex flex-wrap justify-between gap-4">
+        {mangas.map((item) => (
+          <Link href={`/${item.mangaName}`} key={item.id}>
+            <Image
+              alt="Manga Cover"
+              src={item.mangaCover || '/icons/icon.ico'}
+              width={250}
+              height={400}
+            />
+          </Link>
+        ))}
+      </main>
+    </>
   );
 }
