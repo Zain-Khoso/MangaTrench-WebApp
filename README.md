@@ -2,6 +2,14 @@
 
 Manga Trench is a plateform for manga readers. Here you can find and read all the manga you want. Users can Register themselves, and can talk through the comment section with other like minded people.
 
+### Pages
+
+**Home**: Displays all of the mangas you can read on the site.
+
+**Manga / Chapters**: Displays all the available chapters of a perticular manga.
+
+**Chapter**: Here you read your manga."
+
 ## Getting Started
 
 Clone the repository:
@@ -15,6 +23,12 @@ Install the dependencies:
 ```bash
 cd MangaTrench
 npm install
+```
+
+Setup Environment Variables:
+
+```bash
+MONGO_URI=<your-mongo-atlas-db-uri>
 ```
 
 Run the development server:
