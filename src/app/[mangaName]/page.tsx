@@ -1,5 +1,6 @@
 // Lib Imports.
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 // Local Imports.
 import { connectToDatabase, getModel } from '@/libs/dbClient';
@@ -10,6 +11,18 @@ type Props = {
     mangaName: string;
   };
 };
+
+// Metadata
+export function generateMetadata({ params: { mangaName } }: Props): Metadata {
+  const manga = mangaName
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+  return {
+    title: manga,
+    description: `Read ${manga} manga online all you want, as long as you want to. for free.`,
+  };
+}
 
 export default async function MangaPage({ params: { mangaName } }: Props) {
   // Waiting for a successful connection to the database.

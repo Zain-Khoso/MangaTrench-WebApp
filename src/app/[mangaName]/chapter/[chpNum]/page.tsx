@@ -5,6 +5,7 @@ import Image from 'next/image';
 // Local Imports.
 import { connectToDatabase, getModel } from '@/libs/dbClient';
 
+// Types.
 type Props = {
   params: {
     mangaName: string;
@@ -12,6 +13,19 @@ type Props = {
   };
 };
 
+// Metadata
+export function generateMetadata({ params: { mangaName, chpNum } }: Props) {
+  const manga = mangaName
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+  return {
+    title: `Chapter ${chpNum} | ${manga}`,
+    description: `Read ${manga} manga online all you want, as long as you want to. for free.`,
+  };
+}
+
+// Component.
 export default async function MangaPage({
   params: { mangaName, chpNum },
 }: Props) {
