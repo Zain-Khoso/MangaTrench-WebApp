@@ -1,48 +1,20 @@
 # Manga Trench - Enjoy Manga Online.
 
-Manga Trench is a plateform for manga readers. Here you can find and read all the manga you want. Users can Register themselves, and can talk through the comment section with other like minded people.
+Manga Trench is a platform designed by manga enthusiasts, for manga enthusiasts. Here you can immerse yourself in a vast library of manga spanning numerous genres and styles. Our commitment to providing a blazing-fast reading experience ensures that you can lose yourself in the captivating stories without interruption.
 
-### Pages
+## Technologies.
 
-**Home**: Displays all of the mangas you can read on the site.
+- **Next.js**: Next.js is a React framework for building server-side rendered (SSR) and static web applications.
+- **Mongoose**: Mongoose is an object modeling tool for MongoDB and Node.js, designed to simplify data manipulation and validation.
 
-**Manga / Chapters**: Displays all the available chapters of a perticular manga.
+## Contribution
 
-**Chapter**: Here you read your manga."
+We welcome contributions from everyone. Before you get started, please take a moment to review the guidelines below:
 
-## Getting Started
+- Fork the repository and create your branch from `main`.
+- Ensure your code adheres to the coding conventions used throughout the project.
+- Open a pull request, referencing any issues it addresses.
 
-Clone the repository:
-
-```bash
-git clone https://github.com/Zain-Khoso/MangaTrench.git
-```
-
-Install the dependencies:
-
-```bash
-cd MangaTrench
-npm install
-```
-
-Setup Environment Variables:
-
-```bash
-MONGO_URI=<your-mongo-atlas-db-uri>
-```
-
-Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Contributing
-
-We welcome contributions and feedback! If you find any bugs, issues, or have suggestions for improvement, please create a pull request or issue. For major changes, please open an issue first to discuss the changes.
+Thank you for contributing to our project! 🎉
 
 Build with ❣️ by [Zain-Khoso](https://github.com/Zain-Khoso)
