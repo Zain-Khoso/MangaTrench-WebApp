@@ -3,7 +3,11 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 // Local Imports.
-import { connectToMongodb, getModel } from '@/libs/dbClient';
+import {
+  connectToMongodb,
+  getCollectionNames,
+  getModel,
+} from '@/libs/dbClient';
 import Navbar from '@/components/Navbar';
 
 type Props = {
@@ -24,6 +28,16 @@ export function generateMetadata({ params: { mangaName } }: Props): Metadata {
   };
 }
 
+// Static Params
+export async function generateStaticParams() {
+  // Waiting for a successful connection to the database.
+  await connectToMongodb();
+
+  // Getting the name and cover of each available manga.
+  return await getCollectionNames();
+}
+
+// Component.
 export default async function MangaPage({ params: { mangaName } }: Props) {
   // Waiting for a successful connection to the database.
   await connectToMongodb();
