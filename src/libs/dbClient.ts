@@ -52,9 +52,7 @@ export const connectToMongodb = async function () {
 
   // Connecting to mongodb.
   try {
-    await mongoose.connect(
-      `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@maincluster.bwozlbo.mongodb.net/MangaURLs`
-    );
+    await mongoose.connect(process.env.MONGO_URI || '');
   } catch (err) {
     throw new Error('Unable to connect to mongodb.');
   }
