@@ -6,7 +6,7 @@ import Link from 'next/link';
 // Local Imports.
 import Navbar from '@/components/Navbar';
 import {
-  connectToDatabase,
+  connectToMongodb,
   getCollectionNames,
   getModel,
 } from '@/libs/dbClient';
@@ -20,11 +20,7 @@ export const metadata: Metadata = {
 // Component.
 export default async function Home() {
   // Waiting for a successful connection to the database.
-  try {
-    await connectToDatabase();
-  } catch {
-    throw new Error(Errors.UNABLE_TO_CONNECT_TO_MONGODB);
-  }
+  await connectToMongodb();
 
   // Getting the name and cover of each available manga.
   const collectionNames = await getCollectionNames();

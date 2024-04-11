@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 // Local Imports.
-import { connectToDatabase, getModel } from '@/libs/dbClient';
+import { connectToMongodb, getModel } from '@/libs/dbClient';
 import Navbar from '@/components/Navbar';
 
 type Props = {
@@ -26,11 +26,7 @@ export function generateMetadata({ params: { mangaName } }: Props): Metadata {
 
 export default async function MangaPage({ params: { mangaName } }: Props) {
   // Waiting for a successful connection to the database.
-  try {
-    await connectToDatabase();
-  } catch {
-    throw new Error(Errors.UNABLE_TO_CONNECT_TO_MONGODB);
-  }
+  await connectToMongodb();
 
   const manga = await getModel(mangaName)
     .aggregate()

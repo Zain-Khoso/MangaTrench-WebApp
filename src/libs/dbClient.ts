@@ -37,20 +37,25 @@ export const getModel = function (
 
 // This function gets all the collection names inside of mongodb.
 export const getCollectionNames = async function (): Promise<string[]> {
-  const collections = await mongoose.connection.db.listCollections().toArray();
+  // If a connection a not already stablished then first stablish a connection.
+  if (!mongoose?.connection?.readyState) await connectToMongodb();
+
+  const collections = await mongoose.connection.listCollections();
   return collections.map((item) => item.name);
 };
 
 // This function connects to mongodb via a connection string in the env variables.
 // And it returns nothing back.
-export const connectToDatabase = async function () {
-  try {
-    // If there is already a connection stablished then return.
-    if (mongoose.connection.readyState) return;
+export const connectToMongodb = async function () {
+  // If there is already a connection stablished then return.
+  if (mongoose.connection.readyState) return;
 
-    // Connecting to mongodb.
-    await mongoose.connect(process.env.MONGO_URI || '');
+  // Connecting to mongodb.
+  try {
+    await mongoose.connect(
+      `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@maincluster.bwozlbo.mongodb.net/MangaURLs`
+    );
   } catch (err) {
-    throw new Error('Unable to connect to db.');
+    throw new Error('Unable to connect to mongodb.');
   }
 };

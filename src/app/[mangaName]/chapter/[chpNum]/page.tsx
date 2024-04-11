@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // Local Imports.
-import { connectToDatabase, getModel } from '@/libs/dbClient';
+import { connectToMongodb, getModel } from '@/libs/dbClient';
 
 // Types.
 type Props = {
@@ -30,11 +30,7 @@ export default async function MangaPage({
   params: { mangaName, chpNum },
 }: Props) {
   // Waiting for a successful connection to the database.
-  try {
-    await connectToDatabase();
-  } catch {
-    throw new Error(Errors.UNABLE_TO_CONNECT_TO_MONGODB);
-  }
+  await connectToMongodb();
 
   const manga = mangaName
     .split('-')
