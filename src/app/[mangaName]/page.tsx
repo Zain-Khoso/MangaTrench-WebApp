@@ -52,12 +52,17 @@ export default async function MangaPage({ params: { mangaName } }: Props) {
   return (
     <>
       <Navbar />
-      <main className="max-w-[100vw] p-8 flex flex-wrap justify-center items-center gap-4 place-items-center">
-        {chapters.map((item) => (
+      <main style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+        gap: "1.5rem",
+        padding:"1.5rem"
+      }}>
+        {chapters.sort((a, b) => a.chapterNumber - b.chapterNumber).map((item) => (
           <Link
             href={`/${mangaName}/chapter/${item.chapterNumber}`}
             key={item.id}
-            className="bg-teal-800 text-white px-12 py-2 rounded"
+            className="bg-teal-800 text-white px-12 py-2 rounded whitespace-nowrap text-center"
           >
             Chapter {item.chapterNumber}
           </Link>
