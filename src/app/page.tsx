@@ -44,7 +44,7 @@ export default async function Home() {
           <Link href={`/${item.mangaName}`} key={item.id}>
             <Image
               alt="Manga Cover"
-              src={item.mangaCover || '/icons/icon.ico'}
+              src={item.mangaCover!}
               width={250}
               height={400}
             />

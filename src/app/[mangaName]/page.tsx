@@ -46,27 +46,24 @@ export default async function MangaPage({ params: { mangaName } }: Props) {
     .aggregate()
     .sort({ ChapterNum: 'ascending' });
   const chapters = manga.map((item) => {
-    return { chapterNumber: item.ChapterNum, id: item.id };
+    return { id: item.id, chapterNumber: item.ChapterNum };
   });
 
   return (
     <>
       <Navbar />
-      <main style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-        gap: "1.5rem",
-        padding:"1.5rem"
-      }}>
-        {chapters.sort((a, b) => a.chapterNumber - b.chapterNumber).map((item) => (
-          <Link
-            href={`/${mangaName}/chapter/${item.chapterNumber}`}
-            key={item.id}
-            className="bg-teal-800 text-white px-12 py-2 rounded whitespace-nowrap text-center"
-          >
-            Chapter {item.chapterNumber}
-          </Link>
-        ))}
+      <main className="grid grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-6 p-6">
+        {chapters
+          .sort((a, b) => a.chapterNumber - b.chapterNumber)
+          .map((item) => (
+            <Link
+              key={item.id}
+              href={`/${mangaName}/chapter/${item.chapterNumber}`}
+              className="bg-teal-800 text-white px-12 py-2 rounded whitespace-nowrap text-center"
+            >
+              Chapter {item.chapterNumber}
+            </Link>
+          ))}
       </main>
     </>
   );
