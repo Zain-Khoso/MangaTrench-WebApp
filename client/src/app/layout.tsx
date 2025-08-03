@@ -1,5 +1,6 @@
 // Lib Imports.
 import { Nunito } from "next/font/google";
+
 // Assets.
 import "./globals.css";
 
@@ -15,7 +16,10 @@ const FontNunito = Nunito({
 
 // Root Metadata.
 export const metadata: Metadata = {
-  title: "Manga Trench",
+  title: {
+    template: "%s | Manga Trench",
+    default: "Manga Trench",
+  },
 };
 
 // This Layout encapsulates the entire application.
