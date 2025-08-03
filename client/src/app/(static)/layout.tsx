@@ -10,10 +10,12 @@ import BrandLogo from '@/assets/brand/logo.png';
 import { Button } from '@/components/shadcn/button';
 import ThemeToggler from '@/components/ThemeToggler';
 import HeroSection from '@/components/static/HeroSection';
+import Disclaimer from '@/components/static/Disclaimer';
 
 // Types.
 import { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
+import { cn } from '@/utils';
 
 // Metadata.
 export const metadata: Metadata = {
@@ -101,12 +103,12 @@ export default async function StaticLayout({ children }: PropsWithChildren) {
           </nav>
         </div>
 
-        {pathname === '/' ? <HeroSection /> : <></>}
+        {pathname === '/' ? <HeroSection /> : pathname === '/disclaimer' ? <Disclaimer /> : <></>}
       </header>
 
       {children}
 
-      <footer className="bg-secondary">
+      <footer className={cn('bg-secondary', pathname !== '/' ? 'mt-auto' : '')}>
         <div className="flex items-center justify-between p-4 2xl:mx-auto 2xl:max-w-[1440px]">
           <Link href="/">
             <Image alt="Manga Trench" src={BrandLogo} width={48} height={48} />

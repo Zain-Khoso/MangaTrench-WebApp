@@ -1,24 +1,24 @@
 // Lib Imports.
-import { Nunito } from "next/font/google";
+import { Nunito } from 'next/font/google';
 
 // Assets.
-import "./globals.css";
+import './globals.css';
 
 // Types.
-import type { Metadata } from "next";
-import { PropsWithChildren } from "react";
+import type { Metadata } from 'next';
+import { PropsWithChildren } from 'react';
 
 // Font Initializations.
 const FontNunito = Nunito({
-  variable: "--font-nunito",
-  subsets: ["latin"],
+  variable: '--font-nunito',
+  subsets: ['latin'],
 });
 
 // Root Metadata.
 export const metadata: Metadata = {
   title: {
-    template: "%s | Manga Trench",
-    default: "Manga Trench",
+    template: '%s | Manga Trench',
+    default: 'Manga Trench',
   },
 };
 
@@ -26,7 +26,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={`${FontNunito.variable} antialiased`}>{children}</body>
+      <body
+        className={`${FontNunito.variable} flex min-h-dvh flex-col justify-between antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
