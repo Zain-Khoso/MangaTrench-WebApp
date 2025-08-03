@@ -37,16 +37,8 @@ export default function ThemeToggler() {
   }, []);
 
   return dark ? (
-    <MdSunny
-      size={24}
-      className="fill-background stroke-background cursor-pointer"
-      onClick={handleClick}
-    />
+    <MdSunny size={24} className="cursor-pointer fill-white stroke-white" onClick={handleClick} />
   ) : (
-    <LuMoon
-      size={24}
-      className="fill-background stroke-background cursor-pointer"
-      onClick={handleClick}
-    />
+    <LuMoon size={24} className="cursor-pointer fill-white stroke-white" onClick={handleClick} />
   );
 }

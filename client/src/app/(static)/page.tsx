@@ -174,22 +174,22 @@ export default function LandingPage() {
 
             <ul className="flex items-center gap-4">
               <li className="grid h-12 w-12 place-items-center">
-                <Link href="/" target="_blank">
-                  <FaGithub size={24} />
-                </Link>
-              </li>
-              <li className="grid h-12 w-12 place-items-center">
-                <Link href="/" target="_blank">
-                  <FaXTwitter size={24} />
-                </Link>
-              </li>
-              <li className="grid h-12 w-12 place-items-center">
-                <Link href="/" target="_blank">
+                <Link href="https://www.linkedin.com/in/zain-khoso/" target="_blank">
                   <FaLinkedin size={24} className="fill-[#0077B5]" />
                 </Link>
               </li>
               <li className="grid h-12 w-12 place-items-center">
-                <Link href="/" target="_blank">
+                <Link href="https://github.com/Zain-Khoso" target="_blank">
+                  <FaGithub size={24} />
+                </Link>
+              </li>
+              <li className="grid h-12 w-12 place-items-center">
+                <Link href="https://x.com/Zain_Khoso_Dev" target="_blank">
+                  <FaXTwitter size={24} />
+                </Link>
+              </li>
+              <li className="grid h-12 w-12 place-items-center">
+                <Link href="https://medium.com/@zain.khoso.dev" target="_blank">
                   <FaMedium size={24} />
                 </Link>
               </li>
