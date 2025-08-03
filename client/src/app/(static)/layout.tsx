@@ -1,16 +1,15 @@
 // Lib Imports.
+import { headers } from 'next/headers';
 import Link from 'next/link';
 import Image from 'next/image';
 
 // Assets.
 import BrandLogo from '@/assets/brand/logo.png';
-import { FaMagnifyingGlassArrowRight } from 'react-icons/fa6';
 
 // Components.
-import { H1, H4, P } from '@/components/shadcn/typography';
-import { Button, ButtonLink } from '@/components/shadcn/button';
-import TextHighlight from '@/components/TextHighlight';
+import { Button } from '@/components/shadcn/button';
 import ThemeToggler from '@/components/ThemeToggler';
+import HeroSection from '@/components/static/HeroSection';
 
 // Types.
 import { Metadata } from 'next';
@@ -22,7 +21,10 @@ export const metadata: Metadata = {
 };
 
 // This layout is used in all statically generated pages.
-export default function StaticLayout({ children }: PropsWithChildren) {
+export default async function StaticLayout({ children }: PropsWithChildren) {
+  const headersList = await headers();
+  const pathname = headersList.get('custom-pathname');
+
   return (
     <>
       <header className="bg-secondary flex h-fit max-h-[820px] w-full flex-col gap-8 pb-8 md:h-dvh xl:max-h-none xl:gap-12">
@@ -99,42 +101,7 @@ export default function StaticLayout({ children }: PropsWithChildren) {
           </nav>
         </div>
 
-        <section
-          id="home"
-          className="w-full flex-1 scroll-m-48 space-y-2 px-2 md:px-8 xl:space-y-12 2xl:mx-auto 2xl:max-w-[1440px]"
-        >
-          <H1>
-            Find, Rate, and Talk <TextHighlight>Manga</TextHighlight> — All in One{' '}
-            <TextHighlight>Trench</TextHighlight>.
-          </H1>
-
-          <P>
-            Discover thousands of manga, share your thoughts, and connect with fans worldwide — all
-            from your personal manga hub.
-          </P>
-
-          <ul className="mt-8 hidden items-center justify-evenly gap-8 md:flex">
-            <li className="flex w-full flex-col items-center gap-4">
-              <div className="bg-background aspect-video w-full rounded-xl"></div>
-              <H4>Browse</H4>
-            </li>
-            <li className="flex w-full flex-col items-center gap-4">
-              <div className="bg-background aspect-video w-full rounded-xl"></div>
-              <H4>Review</H4>
-            </li>
-            <li className="flex w-full flex-col items-center gap-4">
-              <div className="bg-background aspect-video w-full rounded-xl"></div>
-              <H4>Chat AI</H4>
-            </li>
-          </ul>
-
-          <div className="mt-12 flex items-center gap-4 md:mt-8">
-            <ButtonLink href="/browse">
-              Browse <FaMagnifyingGlassArrowRight />
-            </ButtonLink>
-            <Button variant="secondary">Sign In</Button>
-          </div>
-        </section>
+        {pathname === '/' ? <HeroSection /> : <></>}
       </header>
 
       {children}
