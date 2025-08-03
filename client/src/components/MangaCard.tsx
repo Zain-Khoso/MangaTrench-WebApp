@@ -33,13 +33,13 @@ export default function MangaCard({ slug, title, banner, ranking, rating, startD
 
   return (
     <Link href={`/manga/${slug}`} className="w-full">
-      <article className="bg-background w-full space-y-2 overflow-hidden rounded-xl pb-6 shadow-xl">
-        <div className="relative aspect-video w-full">
+      <article className="bg-background shadow-foreground group w-full space-y-2 overflow-hidden rounded-xl pb-6 shadow-xl/5">
+        <div className="relative aspect-video w-full overflow-hidden">
           <Image
             alt={title + ' Banner'}
             src={banner}
             fill
-            className="absolute object-cover object-center"
+            className="absolute object-cover object-center transition group-hover:scale-125"
           />
         </div>
 

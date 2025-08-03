@@ -3,14 +3,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // Assets.
-import NavbarBackground from '@/assets/NavbarBackground.svg';
 import BrandLogo from '@/assets/brand/logo.png';
-import { FaMagnifyingGlassArrowRight, FaCircleArrowRight } from 'react-icons/fa6';
+import { FaMagnifyingGlassArrowRight } from 'react-icons/fa6';
 
 // Components.
 import { H1, H4, P } from '@/components/shadcn/typography';
 import { Button, ButtonLink } from '@/components/shadcn/button';
 import TextHighlight from '@/components/TextHighlight';
+import ThemeToggler from '@/components/ThemeToggler';
 
 // Types.
 import { Metadata } from 'next';
@@ -90,6 +90,8 @@ export default function StaticLayout({ children }: PropsWithChildren) {
                     </Link>
                   </li>
                 </ul>
+
+                <ThemeToggler />
 
                 <Button variant="secondary">Sign In</Button>
               </div>
