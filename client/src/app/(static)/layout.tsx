@@ -11,6 +11,7 @@ import { Button } from '@/components/shadcn/button';
 import ThemeToggler from '@/components/ThemeToggler';
 import HeroSection from '@/components/static/HeroSection';
 import Disclaimer from '@/components/static/Disclaimer';
+import FAQ from '@/components/static/FAQ';
 
 // Types.
 import { Metadata } from 'next';
@@ -103,7 +104,15 @@ export default async function StaticLayout({ children }: PropsWithChildren) {
           </nav>
         </div>
 
-        {pathname === '/' ? <HeroSection /> : pathname === '/disclaimer' ? <Disclaimer /> : <></>}
+        {pathname === '/' ? (
+          <HeroSection />
+        ) : pathname === '/disclaimer' ? (
+          <Disclaimer />
+        ) : pathname === '/faq' ? (
+          <FAQ />
+        ) : (
+          <></>
+        )}
       </header>
 
       {children}
