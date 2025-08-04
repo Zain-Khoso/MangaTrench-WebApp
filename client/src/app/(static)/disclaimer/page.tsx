@@ -2,13 +2,14 @@
 import Link from 'next/link';
 
 // Components.
-import { H1, P } from '../shadcn/typography';
+import HeaderUIContainer from '@/components/static/HeaderUIContainer';
 import TextHighlight from '@/components/TextHighlight';
+import { H1, P } from '@/components/shadcn/typography';
 
-// This component holds the entire UI of the disclaimer page.
-export default function Disclaimer() {
+// A Content Disclaimer page.
+export default function DisclaimerPage() {
   return (
-    <>
+    <HeaderUIContainer>
       <H1>Disclaimer</H1>
 
       <P>
@@ -28,6 +29,6 @@ export default function Disclaimer() {
         </Link>
         , and we will address your request promptly.
       </P>
-    </>
+    </HeaderUIContainer>
   );
 }

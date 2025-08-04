@@ -2,21 +2,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-// Utils.
-import { cn } from '@/utils';
-
 // Assets.
 import BrandLogo from '@/assets/brand/logo.png';
 
-// Types.
-type Props = {
-  pathname: string;
-};
-
 // Footer for static route group.
-export default function ({ pathname }: Props) {
+export default function () {
   return (
-    <footer className={cn('bg-secondary', pathname !== '/' ? 'mt-auto' : '')}>
+    <footer className="bg-secondary">
       <div className="flex items-center justify-between p-4 2xl:mx-auto 2xl:max-w-[1440px]">
         <Link href="/">
           <Image alt="Manga Trench" src={BrandLogo} width={48} height={48} />

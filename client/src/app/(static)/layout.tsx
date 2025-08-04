@@ -1,12 +1,5 @@
-// Lib Imports.
-import { headers } from 'next/headers';
-
 // Components.
-import Header from '@/components/static/Header';
-import HeaderUIContainer from '@/components/static/HeaderUIContainer';
-import HeroSection from '@/components/static/HeroSection';
-import Disclaimer from '@/components/static/Disclaimer';
-import FAQ from '@/components/static/FAQ';
+import Navbar from '@/components/static/Navbar';
 import Footer from '@/components/static/Footer';
 
 // Types.
@@ -19,29 +12,14 @@ export const metadata: Metadata = {
 };
 
 // This layout is used in all statically generated pages.
-export default async function StaticLayout({ children }: PropsWithChildren) {
-  const headersList = await headers();
-  const pathname = headersList.get('custom-pathname');
-
+export default function StaticLayout({ children }: PropsWithChildren) {
   return (
     <>
-      <Header>
-        <HeaderUIContainer id={pathname === '/' ? 'home' : undefined}>
-          {pathname === '/' ? (
-            <HeroSection />
-          ) : pathname === '/disclaimer' ? (
-            <Disclaimer />
-          ) : pathname === '/faq' ? (
-            <FAQ />
-          ) : (
-            <></>
-          )}
-        </HeaderUIContainer>
-      </Header>
+      <Navbar />
 
       {children}
 
-      <Footer pathname={pathname || '/'} />
+      <Footer />
     </>
   );
 }

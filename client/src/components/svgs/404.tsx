@@ -4,7 +4,7 @@ export default function Illustration() {
       viewBox="0 0 633 420"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-auto w-full max-w-2xl"
+      className="h-auto w-full max-w-lg"
     >
       <g clipPath="url(#clip0_14_3015)">
         <path
