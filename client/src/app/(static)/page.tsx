@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 // Assets.
 import Creator from '@/assets/brand/creator.png';
-import MailBox from '@/assets/MailBox.svg';
 import { FaStar, FaFire, FaChrome, FaGithub } from 'react-icons/fa';
 import {
   FaMedium,
@@ -21,6 +20,7 @@ import HeaderUIContainer from '@/components/static/HeaderUIContainer';
 import ContactForm from '@/components/static/ContactForm';
 import MangaCard from '@/components/MangaCard';
 import TextHighlight from '@/components/TextHighlight';
+import MailBox from '@/components/svgs/MailBox';
 import { Button, ButtonLink } from '@/components/shadcn/button';
 import { H1, H4, P } from '@/components/shadcn/typography';
 
@@ -178,8 +178,8 @@ export default function LandingPage() {
           <div className="flex w-full items-center justify-around gap-8">
             <ContactForm />
 
-            <div className="hidden max-w-[560px] flex-1 place-items-center md:grid">
-              <Image alt="Mailbox Illustration" src={MailBox} className="w-4/5" />
+            <div className="hidden max-w-md flex-1 place-items-center md:grid">
+              <MailBox />
             </div>
           </div>
         </section>
