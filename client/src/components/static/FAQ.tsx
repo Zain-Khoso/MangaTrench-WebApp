@@ -11,10 +11,10 @@ import {
 } from '@/components/shadcn/accordion';
 import TextHighlight from '../TextHighlight';
 
-// This component holds the entire UI of the disclaimer page.
+// This component holds the entire UI of the FAQ page.
 export default function FAQ() {
   return (
-    <section className="w-full flex-1 scroll-m-48 space-y-2 px-2 md:px-8 xl:space-y-12 2xl:mx-auto 2xl:max-w-[1440px]">
+    <>
       <H1>Frequently Asked Questions</H1>
 
       <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
@@ -123,6 +123,6 @@ export default function FAQ() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </section>
+    </>
   );
 }

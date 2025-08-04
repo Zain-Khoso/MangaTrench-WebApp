@@ -9,10 +9,7 @@ import TextHighlight from '../TextHighlight';
 // This componet holds the UI for Hero Section of Landing Page.
 export default function HeroSection() {
   return (
-    <section
-      id="home"
-      className="w-full flex-1 scroll-m-48 space-y-2 px-2 md:px-8 xl:space-y-12 2xl:mx-auto 2xl:max-w-[1440px]"
-    >
+    <>
       <H1>
         Find, Rate, and Talk <TextHighlight>Manga</TextHighlight> — All in One{' '}
         <TextHighlight>Trench</TextHighlight>.
@@ -25,16 +22,16 @@ export default function HeroSection() {
 
       <ul className="mt-8 hidden items-center justify-evenly gap-8 md:flex">
         <li className="flex w-full flex-col items-center gap-4">
-          <div className="bg-background aspect-video w-full rounded-xl"></div>
-          <H4>Browse</H4>
+          <div className="bg-secondary aspect-video w-full rounded-xl"></div>
+          <H4 className="font-bold">Browse</H4>
         </li>
         <li className="flex w-full flex-col items-center gap-4">
-          <div className="bg-background aspect-video w-full rounded-xl"></div>
-          <H4>Review</H4>
+          <div className="bg-secondary aspect-video w-full rounded-xl"></div>
+          <H4 className="font-bold">Review</H4>
         </li>
         <li className="flex w-full flex-col items-center gap-4">
-          <div className="bg-background aspect-video w-full rounded-xl"></div>
-          <H4>Chat AI</H4>
+          <div className="bg-secondary aspect-video w-full rounded-xl"></div>
+          <H4 className="font-bold">Chat AI</H4>
         </li>
       </ul>
 
@@ -42,8 +39,8 @@ export default function HeroSection() {
         <ButtonLink href="/browse">
           Browse <FaMagnifyingGlassArrowRight />
         </ButtonLink>
-        <Button variant="secondary">Sign In</Button>
+        <Button variant="ghost">Sign In</Button>
       </div>
-    </section>
+    </>
   );
 }

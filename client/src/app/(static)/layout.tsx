@@ -1,19 +1,13 @@
 // Lib Imports.
 import { headers } from 'next/headers';
-import Link from 'next/link';
-import Image from 'next/image';
-
-// Assets.
-import BrandLogo from '@/assets/brand/logo.png';
 
 // Components.
-import { Button } from '@/components/shadcn/button';
-import ThemeToggler from '@/components/ThemeToggler';
+import Header from '@/components/static/Header';
+import HeaderUIContainer from '@/components/static/HeaderUIContainer';
 import HeroSection from '@/components/static/HeroSection';
 import Disclaimer from '@/components/static/Disclaimer';
 import FAQ from '@/components/static/FAQ';
 import Footer from '@/components/static/Footer';
-import Header from '@/components/static/Header';
 
 // Types.
 import { Metadata } from 'next';
@@ -32,15 +26,17 @@ export default async function StaticLayout({ children }: PropsWithChildren) {
   return (
     <>
       <Header>
-        {pathname === '/' ? (
-          <HeroSection />
-        ) : pathname === '/disclaimer' ? (
-          <Disclaimer />
-        ) : pathname === '/faq' ? (
-          <FAQ />
-        ) : (
-          <></>
-        )}
+        <HeaderUIContainer id={pathname === '/' ? 'home' : undefined}>
+          {pathname === '/' ? (
+            <HeroSection />
+          ) : pathname === '/disclaimer' ? (
+            <Disclaimer />
+          ) : pathname === '/faq' ? (
+            <FAQ />
+          ) : (
+            <></>
+          )}
+        </HeaderUIContainer>
       </Header>
 
       {children}

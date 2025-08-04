@@ -8,7 +8,7 @@ import TextHighlight from '@/components/TextHighlight';
 // This component holds the entire UI of the disclaimer page.
 export default function Disclaimer() {
   return (
-    <section className="w-full flex-1 scroll-m-48 space-y-2 px-2 md:px-8 xl:space-y-12 2xl:mx-auto 2xl:max-w-[1440px]">
+    <>
       <H1>Disclaimer</H1>
 
       <P>
@@ -28,6 +28,6 @@ export default function Disclaimer() {
         </Link>
         , and we will address your request promptly.
       </P>
-    </section>
+    </>
   );
 }

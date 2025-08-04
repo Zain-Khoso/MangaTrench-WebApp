@@ -27,7 +27,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body
-        className={`${FontNunito.variable} flex min-h-dvh flex-col justify-between antialiased`}
+        className={`${FontNunito.variable} flex min-h-dvh flex-col justify-between gap-8 antialiased`}
       >
         {children}
       </body>
