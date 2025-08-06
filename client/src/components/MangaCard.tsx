@@ -39,6 +39,7 @@ export default function MangaCard({ slug, title, banner, ranking, rating, startD
             alt={title + ' Banner'}
             src={banner}
             fill
+            sizes="(max-width: 768px) 100vw, 320px"
             className="absolute object-cover object-center transition group-hover:scale-125"
           />
         </div>
