@@ -12,6 +12,16 @@ import {
 } from '@/components/shadcn/accordion';
 import { H1, P } from '@/components/shadcn/typography';
 
+// Types.
+import { Metadata } from 'next';
+
+// Metadata.
+export const metadata: Metadata = {
+  title: 'FAQ',
+  description: 'Find answers to frequently asked questions about Manga Trench.',
+  keywords: ['faq', 'help', 'support', 'questions', 'answers'],
+};
+
 // FAQ page of the app.
 export default function FAQ() {
   return (

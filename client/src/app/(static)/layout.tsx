@@ -8,7 +8,11 @@ import { PropsWithChildren } from 'react';
 
 // Metadata.
 export const metadata: Metadata = {
-  title: 'Home',
+  title: {
+    absolute: 'Manga Trench',
+  },
+  description: 'Explore helpful pages like FAQ and Disclaimer at Manga Trench.',
+  keywords: ['FAQ', 'disclaimer', '404', 'support'],
 };
 
 // This layout is used in all statically generated pages.

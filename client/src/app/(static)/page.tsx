@@ -24,6 +24,16 @@ import MailBox from '@/components/svgs/MailBox';
 import { Button, ButtonLink } from '@/components/shadcn/button';
 import { H1, H4, P } from '@/components/shadcn/typography';
 
+// Types.
+import { Metadata } from 'next';
+
+// Metadata.
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Your hub for discovering and rating manga.',
+  keywords: ['mangatrench', 'home', 'discover', 'review', 'rating'],
+};
+
 // Dummy Data.
 const mangas = [
   {

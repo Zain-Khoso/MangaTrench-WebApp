@@ -18,8 +18,19 @@ const FontNunito = Nunito({
 // Root Metadata.
 export const metadata: Metadata = {
   title: {
-    template: '%s | Manga Trench',
     default: 'Manga Trench',
+    template: '%s | Manga Trench',
+  },
+  metadataBase: new URL('https://mangatrench.vercel.app'),
+  description: 'Discover, rate, and review your favorite manga – all in one trench.',
+  keywords: ['manga', 'manga reviews', 'read manga', 'manga discovery', 'manga list'],
+  authors: [{ name: 'Zain Khoso', url: 'https://www.linkedin.com/in/zain-khoso/' }],
+  creator: 'Zain Khoso',
+  publisher: 'Zain Khoso',
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
   },
 };
 

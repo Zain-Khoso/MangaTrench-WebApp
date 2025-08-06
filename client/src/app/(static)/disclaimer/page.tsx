@@ -6,6 +6,16 @@ import HeaderUIContainer from '@/components/static/HeaderUIContainer';
 import TextHighlight from '@/components/TextHighlight';
 import { H1, P } from '@/components/shadcn/typography';
 
+// Types.
+import { Metadata } from 'next';
+
+// Metadata.
+export const metadata: Metadata = {
+  title: 'Disclaimer',
+  description: 'Read the legal disclaimers and information about Manga Trench.',
+  keywords: ['disclaimer', 'terms', 'legal', 'information'],
+};
+
 // A Content Disclaimer page.
 export default function DisclaimerPage() {
   return (

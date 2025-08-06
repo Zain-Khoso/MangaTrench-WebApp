@@ -9,6 +9,16 @@ import Illustration from '@/components/svgs/404';
 import TextHighlight from '@/components/TextHighlight';
 import { H1, P } from '@/components/shadcn/typography';
 
+// Types.
+import { Metadata } from 'next';
+
+// Metadata.
+export const metadata: Metadata = {
+  title: 'Page Not Found',
+  description: "Oops! The page you're looking for doesn't exist.",
+  keywords: ['404', 'not found', 'error page'],
+};
+
 // 404 page for the entire application.
 export default async function NotFound() {
   return (
