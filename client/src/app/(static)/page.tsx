@@ -217,10 +217,10 @@ export default function LandingPage() {
 
               <div className="space-y-6">
                 <P>
-                  I'm a self-taught web developer from Pakistan with over two years of professional
-                  experience. Currently I am working as a freelancer. I built Manga Trench out of my
-                  love for manga and technology — combining design, development, and discovery into
-                  one meaningful platform.
+                  I&apos;m a self-taught web developer from Pakistan with over two years of
+                  professional experience. Currently I am working as a freelancer. I built Manga
+                  Trench out of my love for manga and technology — combining design, development,
+                  and discovery into one meaningful platform.
                 </P>
 
                 <ul className="flex items-center gap-4">

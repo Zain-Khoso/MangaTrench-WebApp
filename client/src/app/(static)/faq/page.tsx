@@ -70,7 +70,7 @@ export default function FAQ() {
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             <P>
-              You can browse without an account, but you'll need to sign in to rate, review,
+              You can browse without an account, but you&apos;ll need to sign in to rate, review,
               bookmark manga, and access our AI chat bot.
             </P>
           </AccordionContent>
@@ -94,7 +94,7 @@ export default function FAQ() {
         </AccordionItem>
         <AccordionItem value="item-7">
           <AccordionTrigger className="font-bold">
-            What's the “Trending This Week” section?
+            What&apos;s the “Trending This Week” section?
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             <P>
@@ -118,8 +118,8 @@ export default function FAQ() {
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             <P>
-              Admin roles are given selectively to trusted users. If you're interested, contact us
-              and share your experience.
+              Admin roles are given selectively to trusted users. If you&apos;re interested, contact
+              us and share your experience.
             </P>
           </AccordionContent>
         </AccordionItem>
