@@ -1,8 +1,9 @@
 // Lib Imports.
 import { Nunito } from 'next/font/google';
 
-// Assets.
+// Local Imports.
 import './globals.css';
+import { Toast } from '@/components/ReactHotToast';
 
 // Types.
 import type { Metadata } from 'next';
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body
         className={`${FontNunito.variable} flex min-h-dvh flex-col justify-between gap-8 antialiased`}
       >
+        <Toast />
         {children}
       </body>
     </html>
