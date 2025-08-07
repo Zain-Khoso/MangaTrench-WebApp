@@ -9,7 +9,8 @@ import { PropsWithChildren } from 'react';
 // Metadata.
 export const metadata: Metadata = {
   title: {
-    absolute: 'Manga Trench',
+    default: 'Manga Trench',
+    template: '%s | Manga Trench',
   },
   description: 'Explore helpful pages like FAQ and Disclaimer at Manga Trench.',
   keywords: ['FAQ', 'disclaimer', '404', 'support'],
