@@ -6,7 +6,7 @@ import Image from 'next/image';
 import BrandLogo from '@/assets/brand/logo.png';
 
 // Footer for static route group.
-export default function () {
+export default function Footer() {
   return (
     <footer className="bg-secondary">
       <div className="flex items-center justify-between p-4 2xl:mx-auto 2xl:max-w-[1440px]">
