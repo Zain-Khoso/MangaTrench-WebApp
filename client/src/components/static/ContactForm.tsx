@@ -4,7 +4,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 // Assets.
 import { FaCircleArrowRight } from 'react-icons/fa6';

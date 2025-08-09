@@ -21,7 +21,7 @@ import ContactForm from '@/components/static/ContactForm';
 import MangaCard from '@/components/MangaCard';
 import TextHighlight from '@/components/TextHighlight';
 import MailBox from '@/components/svgs/MailBox';
-import { Button, ButtonLink } from '@/components/shadcn/button';
+import { ButtonLink } from '@/components/shadcn/button';
 import { H1, H4, P } from '@/components/shadcn/typography';
 
 // Types.
@@ -116,7 +116,9 @@ export default function LandingPage() {
           <ButtonLink href="/browse">
             Browse <FaMagnifyingGlassArrowRight />
           </ButtonLink>
-          <Button variant="ghost">Sign In</Button>
+          <ButtonLink href="/sign-in" variant="ghost">
+            Sign In
+          </ButtonLink>
         </div>
       </HeaderUIContainer>
 

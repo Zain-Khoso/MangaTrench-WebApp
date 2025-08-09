@@ -6,7 +6,7 @@ import Image from 'next/image';
 import BrandLogo from '@/assets/brand/logo.png';
 
 // Components.
-import { Button } from '../shadcn/button';
+import { ButtonLink } from '../shadcn/button';
 import ThemeToggler from '../ThemeToggler';
 
 // This component is the Navbar for the entire Static Route Group.
@@ -78,7 +78,9 @@ export default function Navbar() {
 
           <ThemeToggler />
 
-          <Button variant="secondary">Sign In</Button>
+          <ButtonLink href="/sign-in" variant="secondary">
+            Sign In
+          </ButtonLink>
         </div>
       </nav>
     </div>
