@@ -1,6 +1,7 @@
 'use client';
 
 // Lib Imports.
+import { useState } from 'react';
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -19,6 +20,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { MdMail } from 'react-icons/md';
 
 // Components.
+import Spinner from '../Spinner';
 import { Button } from '../shadcn/button';
 
 // Types.
@@ -56,29 +58,44 @@ const SSOs = {
 
 // This is a special button, used only for SSO sign in options.
 export default function SSOButton({ provider }: Props) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const { icon: Icon, className, label, provider: AuthProvider } = SSOs[provider];
 
   const handleClick = async function () {
-    toast.promise(() => signInWithPopup(auth, AuthProvider), {
-      loading: 'Signing Up',
-      error: 'Something went wrong',
-      success: 'Welcome! 🙂',
-    });
+    const signUp = () => signInWithPopup(auth, AuthProvider);
+
+    try {
+      setIsLoading(true);
+
+      await toast.promise(signUp, {
+        loading: 'Signing Up',
+        error: 'Something went wrong',
+        success: 'Welcome! 🙂',
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <Button
-      variant="secondary"
-      className="group flex w-full items-center justify-between"
-      onClick={handleClick}
-    >
-      <Icon className={className} />
+    <>
+      {isLoading ? <Spinner /> : <></>}
+      <Button
+        variant="secondary"
+        className="group flex w-full items-center justify-between"
+        onClick={handleClick}
+      >
+        <Icon className={className} />
 
-      <span>Continue with {label}</span>
+        <span>Continue with {label}</span>
 
-      <div className="h-4 w-4">
-        <FaArrowRight className="-translate-x-2 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-80" />
-      </div>
-    </Button>
+        <div className="h-4 w-4">
+          <FaArrowRight className="-translate-x-2 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-80" />
+        </div>
+      </Button>
+    </>
   );
 }
