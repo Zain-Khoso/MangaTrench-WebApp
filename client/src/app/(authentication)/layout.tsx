@@ -1,4 +1,5 @@
 // Lib Imports.
+import Link from 'next/link';
 import Image from 'next/image';
 
 // Assets.
@@ -26,18 +27,22 @@ export const metadata: Metadata = {
 // This layout is used for all authentication pages.
 export default function AuthentucationLayout({ children }: PropsWithChildren) {
   return (
-    <main className="h-dvh min-h-fit w-dvw space-y-12 px-4 py-8">
+    <main className="md:bg-secondary flex h-dvh min-h-fit w-dvw flex-col gap-12 px-4 py-8 md:m-auto md:h-fit md:w-4/5 md:flex-row md:items-center md:justify-between md:rounded-4xl md:px-12 lg:max-w-4xl">
       <header className="space-y-4">
         <Image alt="Manga Trench Logo" src={Logo} width={80} height={80} />
 
         <PageLabel />
 
         <P>
-          Create your <TextHighlight>Manga Trench</TextHighlight> account.
+          Create your{' '}
+          <Link href="/" className="hover:underline">
+            <TextHighlight>Manga Trench</TextHighlight>
+          </Link>{' '}
+          account.
         </P>
       </header>
 
-      <main className="space-y-6">
+      <main className="space-y-6 md:w-full md:max-w-xs">
         <ul className="space-y-4">
           <li>
             <SSOButton provider="google" />
