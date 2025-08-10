@@ -8,6 +8,7 @@ import BrandLogo from '@/assets/brand/logo.png';
 // Components.
 import { ButtonLink } from '../shadcn/button';
 import ThemeToggler from '../ThemeToggler';
+import NavbarActions from './NavbarActions';
 
 // This component is the Navbar for the entire Static Route Group.
 export default function Navbar() {
@@ -16,7 +17,7 @@ export default function Navbar() {
       {/* Navbar Items */}
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between p-2 md:px-4 md:py-8">
         {/* Brand Logo */}
-        <Link href="/">
+        <Link href="/#home">
           <Image
             alt="Brand Logo"
             src={BrandLogo}
@@ -26,14 +27,6 @@ export default function Navbar() {
 
         <div className="flex items-center gap-8">
           <ul className="hidden items-center gap-4 md:flex">
-            <li>
-              <Link
-                href="/#home"
-                className="text-foreground/65 hover:text-foreground dark:text-foreground/90 dark:hover:text-foreground font-bold"
-              >
-                Home
-              </Link>
-            </li>
             <li>
               <Link
                 href="/#trending"
@@ -48,14 +41,6 @@ export default function Navbar() {
                 className="text-foreground/65 hover:text-foreground dark:text-foreground/90 dark:hover:text-foreground font-bold"
               >
                 Featured
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/#browse"
-                className="text-foreground/65 hover:text-foreground dark:text-foreground/90 dark:hover:text-foreground font-bold"
-              >
-                Browse
               </Link>
             </li>
             <li>
@@ -78,9 +63,7 @@ export default function Navbar() {
 
           <ThemeToggler />
 
-          <ButtonLink href="/sign-in" variant="secondary">
-            Sign In
-          </ButtonLink>
+          <NavbarActions />
         </div>
       </nav>
     </div>
