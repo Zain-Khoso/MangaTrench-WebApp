@@ -1,7 +1,7 @@
 'use client';
 
 // Lib Imports.
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,6 +9,9 @@ import toast from 'react-hot-toast';
 
 // Utils.
 import { auth } from '@/utils/firebase';
+
+// Assets.
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 // Components.
 import { Button } from '@/components/shadcn/button';
@@ -31,6 +34,8 @@ type Props = {
 
 // This is a form component that is used to log users in.
 export default function SignInForm({ prevStep }: Props) {
+  const [seePassword, setSeePassword] = useState(false);
+
   const [login, _, isLoggingIn, loginError] = useSignInWithEmailAndPassword(auth);
 
   // RHF Setup.
@@ -69,6 +74,8 @@ export default function SignInForm({ prevStep }: Props) {
     });
   };
 
+  const togglePassword = () => setSeePassword((val) => !val);
+
   return (
     <>
       {isLoggingIn ? <Spinner /> : <></>}
@@ -98,7 +105,28 @@ export default function SignInForm({ prevStep }: Props) {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="********" {...field} />
+                  <div className="relative h-full w-full">
+                    <Input
+                      type={seePassword ? 'text' : 'password'}
+                      placeholder="********"
+                      {...field}
+                      className="pr-8"
+                    />
+
+                    {seePassword ? (
+                      <FaEyeSlash
+                        size={16}
+                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                        onClick={togglePassword}
+                      />
+                    ) : (
+                      <FaEye
+                        size={16}
+                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                        onClick={togglePassword}
+                      />
+                    )}
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>

@@ -1,7 +1,7 @@
 'use client';
 
 // Lib Imports.
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,6 +9,9 @@ import toast from 'react-hot-toast';
 
 // Utils.
 import { auth } from '@/utils/firebase';
+
+// Assets.
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 // Components.
 import { Button } from '@/components/shadcn/button';
@@ -20,6 +23,7 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
+  FormDescription,
 } from '@/components/shadcn/form';
 import Spinner from '../Spinner';
 
@@ -31,6 +35,9 @@ type Props = {
 
 // This is a form component that is used to create new email and password users.
 export default function SignUpForm({ prevStep }: Props) {
+  const [seePassword, setSeePassword] = useState(false);
+  const [seeConfirmPassword, setSeeConfirmPassword] = useState(false);
+
   const [registerUser, _, isRegistering, registrationError] =
     useCreateUserWithEmailAndPassword(auth);
 
@@ -67,6 +74,9 @@ export default function SignUpForm({ prevStep }: Props) {
     });
   };
 
+  const togglePassword = () => setSeePassword((val) => !val);
+  const toggleConfirmPassword = () => setSeeConfirmPassword((val) => !val);
+
   return (
     <>
       {isRegistering ? <Spinner /> : <></>}
@@ -96,8 +106,33 @@ export default function SignUpForm({ prevStep }: Props) {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="********" {...field} />
+                  <div className="relative h-full w-full">
+                    <Input
+                      type={seePassword ? 'text' : 'password'}
+                      placeholder="********"
+                      {...field}
+                      className="pr-8"
+                    />
+
+                    {seePassword ? (
+                      <FaEyeSlash
+                        size={16}
+                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                        onClick={togglePassword}
+                      />
+                    ) : (
+                      <FaEye
+                        size={16}
+                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                        onClick={togglePassword}
+                      />
+                    )}
+                  </div>
                 </FormControl>
+                <FormDescription>
+                  Password must at least 8 characters long, and must contain a lowercase and
+                  uppercase character, a number and a symbol.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -110,7 +145,28 @@ export default function SignUpForm({ prevStep }: Props) {
               <FormItem>
                 <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="********" {...field} className="relative" />
+                  <div className="relative h-full w-full">
+                    <Input
+                      type={seeConfirmPassword ? 'text' : 'password'}
+                      placeholder="********"
+                      {...field}
+                      className="pr-8"
+                    />
+
+                    {seeConfirmPassword ? (
+                      <FaEyeSlash
+                        size={16}
+                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                        onClick={toggleConfirmPassword}
+                      />
+                    ) : (
+                      <FaEye
+                        size={16}
+                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                        onClick={toggleConfirmPassword}
+                      />
+                    )}
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
