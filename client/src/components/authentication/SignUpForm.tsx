@@ -1,10 +1,14 @@
 'use client';
 
 // Lib Imports.
+import { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
+
+// Utils.
+import { auth } from '@/utils/firebase';
 
 // Components.
 import { Button } from '@/components/shadcn/button';
@@ -17,18 +21,18 @@ import {
   FormControl,
   FormMessage,
 } from '@/components/shadcn/form';
+import Spinner from '../Spinner';
 
 // Types & Schemas.
 import { SignUpFormSchema, type SignUpFormSchemaT } from '@/schemas/signUpForm';
-import { auth } from '@/utils/firebase';
-import Spinner from '../Spinner';
 type Props = {
   prevStep: () => void;
 };
 
 // This is a form component that is used to create new email and password users.
 export default function SignUpForm({ prevStep }: Props) {
-  const [registerUser, _, isRegistering, __] = useCreateUserWithEmailAndPassword(auth);
+  const [registerUser, _, isRegistering, registrationError] =
+    useCreateUserWithEmailAndPassword(auth);
 
   // RHF Setup.
   const form = useForm<SignUpFormSchemaT>({
@@ -40,10 +44,23 @@ export default function SignUpForm({ prevStep }: Props) {
     },
   });
 
+  useEffect(() => {
+    if (!registrationError) return;
+
+    if (registrationError.code === 'auth/email-already-in-use')
+      form.setError('email', { message: 'Email already in use.' });
+  }, [registrationError]);
+
   const onSubmit: SubmitHandler<SignUpFormSchemaT> = async function (data) {
     const { email, password } = data;
 
-    await toast.promise(() => registerUser(email, password), {
+    const handleSignUp = async function () {
+      const response = await registerUser(email, password);
+
+      if (response === undefined) throw new Error();
+    };
+
+    await toast.promise(handleSignUp, {
       loading: 'Creating a User...',
       error: 'Something went wrong.',
       success: 'New User Created.',

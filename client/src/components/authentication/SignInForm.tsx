@@ -1,10 +1,14 @@
 'use client';
 
 // Lib Imports.
+import { useEffect } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
+
+// Utils.
+import { auth } from '@/utils/firebase';
 
 // Components.
 import { Button } from '@/components/shadcn/button';
@@ -17,18 +21,17 @@ import {
   FormControl,
   FormMessage,
 } from '@/components/shadcn/form';
+import Spinner from '../Spinner';
 
 // Types & Schemas.
 import { SignInFormSchema, type SignInFormSchemaT } from '@/schemas/signInForm';
-import { auth } from '@/utils/firebase';
-import Spinner from '../Spinner';
 type Props = {
   prevStep: () => void;
 };
 
 // This is a form component that is used to log users in.
 export default function SignInForm({ prevStep }: Props) {
-  const [login, _, isLoggingIn, __] = useSignInWithEmailAndPassword(auth);
+  const [login, _, isLoggingIn, loginError] = useSignInWithEmailAndPassword(auth);
 
   // RHF Setup.
   const form = useForm<SignInFormSchemaT>({
@@ -39,11 +42,28 @@ export default function SignInForm({ prevStep }: Props) {
     },
   });
 
+  useEffect(() => {
+    if (!loginError) return;
+
+    if (loginError.code === 'auth/invalid-credential') {
+      form.setError('email', {});
+      form.setError('password', {});
+
+      toast.error('Invalid Credentials');
+    }
+  }, [loginError]);
+
   const onSubmit: SubmitHandler<SignInFormSchemaT> = async function (data) {
     const { email, password } = data;
 
-    await toast.promise(() => login(email, password), {
-      loading: 'Sign User In...',
+    const handleSignIn = async function () {
+      const response = await login(email, password);
+
+      if (response === undefined) throw new Error();
+    };
+
+    await toast.promise(handleSignIn, {
+      loading: 'Signing User In...',
       error: 'Something went wrong.',
       success: 'User Sign In Successfull.',
     });

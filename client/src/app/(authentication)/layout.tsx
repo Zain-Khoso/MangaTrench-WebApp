@@ -16,6 +16,7 @@ import TextHighlight from '@/components/TextHighlight';
 import { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
 import AuthActions from '@/components/authentication/AuthActions';
+import TogglePage from '@/components/authentication/TogglePage';
 
 // Metadata.
 export const metadata: Metadata = {
@@ -34,13 +35,7 @@ export default function AuthentucationLayout({ children }: PropsWithChildren) {
 
         <PageLabel />
 
-        <P>
-          Create your{' '}
-          <Link href="/" className="hover:underline">
-            <TextHighlight>Manga Trench</TextHighlight>
-          </Link>{' '}
-          account.
-        </P>
+        <TogglePage />
       </header>
 
       <AuthActions />
