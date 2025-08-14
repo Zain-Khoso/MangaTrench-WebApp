@@ -1,7 +1,7 @@
 'use client';
 
 // Lib Imports.
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
@@ -19,40 +19,39 @@ import {
 } from '@/components/shadcn/form';
 
 // Types & Schemas.
-import { SignUpFormSchema, type SignUpFormSchemaT } from '@/schemas/signUpForm';
+import { SignInFormSchema, type SignInFormSchemaT } from '@/schemas/signInForm';
 import { auth } from '@/utils/firebase';
 import Spinner from '../Spinner';
 type Props = {
   prevStep: () => void;
 };
 
-// This is a form component that is used to create new email and password users.
-export default function SignUpForm({ prevStep }: Props) {
-  const [registerUser, _, isRegistering, __] = useCreateUserWithEmailAndPassword(auth);
+// This is a form component that is used to log users in.
+export default function SignInForm({ prevStep }: Props) {
+  const [login, _, isLoggingIn, __] = useSignInWithEmailAndPassword(auth);
 
   // RHF Setup.
-  const form = useForm<SignUpFormSchemaT>({
-    resolver: zodResolver(SignUpFormSchema),
+  const form = useForm<SignInFormSchemaT>({
+    resolver: zodResolver(SignInFormSchema),
     defaultValues: {
       email: '',
       password: '',
-      confirmPassword: '',
     },
   });
 
-  const onSubmit: SubmitHandler<SignUpFormSchemaT> = async function (data) {
+  const onSubmit: SubmitHandler<SignInFormSchemaT> = async function (data) {
     const { email, password } = data;
 
-    await toast.promise(() => registerUser(email, password), {
-      loading: 'Creating a User...',
+    await toast.promise(() => login(email, password), {
+      loading: 'Sign User In...',
       error: 'Something went wrong.',
-      success: 'New User Created.',
+      success: 'User Sign In Successfull.',
     });
   };
 
   return (
     <>
-      {isRegistering ? <Spinner /> : <></>}
+      {isLoggingIn ? <Spinner /> : <></>}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -86,27 +85,13 @@ export default function SignUpForm({ prevStep }: Props) {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
-                <FormControl>
-                  <Input placeholder="********" {...field} className="relative" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
           <div className="mt-8 flex gap-2">
             <Button variant="ghost" type="button" className="flex-1 gap-4" onClick={prevStep}>
               Back
             </Button>
 
             <Button type="submit" className="flex-1 gap-4">
-              Sign Up
+              Sign In
             </Button>
           </div>
         </form>
