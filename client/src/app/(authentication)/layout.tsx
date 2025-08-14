@@ -21,9 +21,22 @@ import TogglePage from '@/components/authentication/TogglePage';
 // Metadata.
 export const metadata: Metadata = {
   title: {
-    default: 'Manga Trench',
     template: '%s | Manga Trench',
+    default: 'Manga Trench',
   },
+  description:
+    'Sign in or sign up to Manga Trench to explore, review, and bookmark your favorite manga. Your manga journey starts here.',
+  keywords: [
+    'manga trench login',
+    'manga trench sign up',
+    'manga reviews',
+    'manga discovery',
+    'anime manga platform',
+    'manga community',
+    'manga database',
+    'read manga reviews',
+    'join manga trench',
+  ],
 };
 
 // This layout is used for all authentication pages.
