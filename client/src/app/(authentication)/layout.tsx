@@ -15,6 +15,7 @@ import TextHighlight from '@/components/TextHighlight';
 // Types.
 import { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
+import AuthActions from '@/components/authentication/AuthActions';
 
 // Metadata.
 export const metadata: Metadata = {
@@ -42,25 +43,7 @@ export default function AuthentucationLayout({ children }: PropsWithChildren) {
         </P>
       </header>
 
-      <main className="space-y-6 md:w-full md:max-w-xs">
-        <ul className="space-y-4">
-          <li>
-            <SSOButton provider="google" />
-          </li>
-          <li>
-            <SSOButton provider="github" />
-          </li>
-          <li>
-            <SSOButton provider="twitter" />
-          </li>
-          <li>
-            <Separator className="bg-foreground/20 my-8" />
-          </li>
-          <li>
-            <SSOButton provider="email" />
-          </li>
-        </ul>
-      </main>
+      <AuthActions />
     </main>
   );
 }
