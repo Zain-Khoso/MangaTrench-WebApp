@@ -6,7 +6,6 @@ import Image from 'next/image';
 import BrandLogo from '@/assets/brand/logo.png';
 
 // Components.
-import { ButtonLink } from '../shadcn/button';
 import ThemeToggler from '../ThemeToggler';
 import NavbarActions from './NavbarActions';
 

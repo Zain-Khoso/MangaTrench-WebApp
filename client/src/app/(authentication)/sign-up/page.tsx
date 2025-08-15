@@ -1,3 +1,6 @@
+// Components.
+import SignUpPageUI from '@/components/authentication/SignUpPageUI';
+
 // Types.
 import { Metadata } from 'next';
 
@@ -19,5 +22,5 @@ export const metadata: Metadata = {
 
 // This page handles user registrations for the App.
 export default function SignUpPage() {
-  return;
+  return <SignUpPageUI />;
 }

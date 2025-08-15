@@ -1,8 +1,5 @@
 'use client';
 
-// Lib Imports.
-import Link from 'next/link';
-
 // Assets.
 import { FaArrowRight } from 'react-icons/fa6';
 

@@ -1,3 +1,6 @@
+// Components.
+import SignInPageUI from '@/components/authentication/SignInPageUI';
+
 // Types.
 import { Metadata } from 'next';
 
@@ -17,7 +20,7 @@ export const metadata: Metadata = {
   ],
 };
 
-// This page handles user sign ins for the App.
+// This page handles user Sign Ins.
 export default function SignInPage() {
-  return;
+  return <SignInPageUI />;
 }

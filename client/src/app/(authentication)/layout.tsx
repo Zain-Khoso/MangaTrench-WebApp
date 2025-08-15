@@ -1,22 +1,16 @@
 // Lib Imports.
-import Link from 'next/link';
 import Image from 'next/image';
 
 // Assets.
 import Logo from '@/assets/brand/logo.png';
 
 // Components.
-import { Separator } from '@/components/shadcn/separator';
-import { P } from '@/components/shadcn/typography';
-import SSOButton from '@/components/authentication/SSOButton';
 import PageLabel from '@/components/authentication/PageLabel';
-import TextHighlight from '@/components/TextHighlight';
+import TogglePage from '@/components/authentication/TogglePage';
 
 // Types.
 import { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
-import AuthActions from '@/components/authentication/AuthActions';
-import TogglePage from '@/components/authentication/TogglePage';
 
 // Metadata.
 export const metadata: Metadata = {
@@ -51,7 +45,7 @@ export default function AuthentucationLayout({ children }: PropsWithChildren) {
         <TogglePage />
       </header>
 
-      <AuthActions />
+      {children}
     </main>
   );
 }

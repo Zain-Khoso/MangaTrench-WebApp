@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   TwitterAuthProvider,
   GithubAuthProvider,
+  AuthProvider as AuthProviderT,
 } from 'firebase/auth';
 import toast from 'react-hot-toast';
 
@@ -21,40 +22,33 @@ import { FcGoogle } from 'react-icons/fc';
 import Spinner from '../Spinner';
 import ArrowAnimationButton from '../ArrowAnimationButton';
 
-// Types.
-type Props = {
-  provider: 'google' | 'github' | 'twitter';
-};
-
 // Component Data.
-const SSOs = {
-  google: {
+const SSOs = [
+  {
     icon: FcGoogle,
     label: 'Google',
     provider: new GoogleAuthProvider(),
     className: '',
   },
-  github: {
+  {
     icon: FaGithub,
     label: 'GitHub',
     provider: new GithubAuthProvider(),
     className: 'fill-foreground',
   },
-  twitter: {
+  {
     icon: FaXTwitter,
     label: 'Twitter',
     provider: new TwitterAuthProvider(),
     className: 'fill-foreground',
   },
-};
+];
 
 // This is a special button, used only for SSO sign in options.
-export default function SSOButton({ provider }: Props) {
+export default function SSOButtons() {
   const [isLoading, setIsLoading] = useState(false);
 
-  const { icon: Icon, className, label, provider: AuthProvider } = SSOs[provider];
-
-  const handleClick = async function () {
+  const handleClick = async function (AuthProvider: AuthProviderT) {
     const signUp = () => signInWithPopup(auth, AuthProvider);
 
     try {
@@ -75,13 +69,18 @@ export default function SSOButton({ provider }: Props) {
   return (
     <>
       {isLoading ? <Spinner /> : <></>}
-      <ArrowAnimationButton
-        variant="secondary"
-        icon={Icon}
-        iconClasses={className}
-        label={'Continue with ' + label}
-        onClick={handleClick}
-      />
+
+      {SSOs.map(({ icon: Icon, className, label, provider }) => (
+        <li key={label + '-sso-option'}>
+          <ArrowAnimationButton
+            variant="secondary"
+            icon={Icon}
+            iconClasses={className}
+            label={'Continue with ' + label}
+            onClick={() => handleClick(provider)}
+          />
+        </li>
+      ))}
     </>
   );
 }
