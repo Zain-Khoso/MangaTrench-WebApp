@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 export default function AuthentucationLayout({ children }: PropsWithChildren) {
   return (
     <main className="md:bg-secondary flex h-dvh min-h-fit w-dvw flex-col gap-12 px-4 py-8 md:m-auto md:h-fit md:w-4/5 md:flex-row md:items-center md:justify-between md:rounded-4xl md:px-12 lg:max-w-4xl">
-      <header className="space-y-4">
+      <header className="flex-1 space-y-4">
         <Image alt="Manga Trench Logo" src={Logo} width={80} height={80} />
 
         <PageLabel />

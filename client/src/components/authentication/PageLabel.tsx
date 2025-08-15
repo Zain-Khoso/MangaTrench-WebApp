@@ -1,25 +1,20 @@
 'use client';
 
 // Lib Imports.
-import { usePathname, useRouter } from 'next/navigation';
-import { useAuthState } from 'react-firebase-hooks/auth';
-
-// Utils.
-import { auth } from '@/utils/firebase';
+import { usePathname } from 'next/navigation';
 
 // Components.
 import { H1 } from '../shadcn/typography';
 
 // Component to dynamically change page name inside authentication layout.
 export default function PageLabel() {
-  const router = useRouter();
   const pathname = usePathname();
 
-  const [user] = useAuthState(auth);
+  const pageTitle = pathname
+    .slice(1)
+    .split('-')
+    .map((segment) => segment.slice(0, 1).toUpperCase() + segment.slice(1).toLowerCase())
+    .join(' ');
 
-  if (user) router.push('/');
-
-  return (
-    <H1>{pathname === '/sign-up' ? 'Sign Up' : pathname === '/sign-in' ? 'Sign In' : 'Auth'}</H1>
-  );
+  return <H1>{pageTitle}</H1>;
 }

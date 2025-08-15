@@ -48,14 +48,14 @@ const SSOs = [
 export default function SSOButtons() {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleClick = async function (AuthProvider: AuthProviderT) {
+  const handleClick = async function (label: string, AuthProvider: AuthProviderT) {
     const signUp = () => signInWithPopup(auth, AuthProvider);
 
     try {
       setIsLoading(true);
 
       await toast.promise(signUp, {
-        loading: 'Signing Up',
+        loading: `Connecting to ${label}...`,
         error: 'Something went wrong',
         success: 'Welcome! 🙂',
       });
@@ -77,7 +77,7 @@ export default function SSOButtons() {
             icon={Icon}
             iconClasses={className}
             label={'Continue with ' + label}
-            onClick={() => handleClick(provider)}
+            onClick={() => handleClick(label, provider)}
           />
         </li>
       ))}

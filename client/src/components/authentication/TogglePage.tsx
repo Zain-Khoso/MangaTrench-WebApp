@@ -2,7 +2,7 @@
 
 // Lib Imports.
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 // Components.
 import { P } from '../shadcn/typography';
@@ -10,7 +10,10 @@ import TextHighlight from '../TextHighlight';
 
 // This component is used to change between the sign-in and sign-up pages.
 export default function TogglePage() {
+  const router = useRouter();
   const pathname = usePathname();
+
+  const handleGoBack = () => router.back();
 
   return pathname === '/sign-in' ? (
     <P>
@@ -25,6 +28,13 @@ export default function TogglePage() {
       <Link href="/sign-in" className="hover:underline">
         <TextHighlight>Sign In</TextHighlight>
       </Link>
+    </P>
+  ) : pathname === '/delete-account' ? (
+    <P>
+      You did not mean to come here?{' '}
+      <span onClick={handleGoBack} className="cursor-pointer">
+        <TextHighlight>Go back</TextHighlight>
+      </span>
     </P>
   ) : (
     <></>

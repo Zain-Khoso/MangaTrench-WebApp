@@ -31,5 +31,11 @@ const password = z
   .max(40, "password can't exceed 16 characters.")
   .refine((password) => isStrongPassword(password), 'Password is too weak.');
 
+// Specific String Fields
+const deleteString = z
+  .string()
+  .min(1, 'This field is required.')
+  .refine((deleteString) => deleteString === 'DELETE', 'Invalid Input.');
+
 // General Schema Exports.
-export { email, username, firstname, lastname, message, password };
+export { email, username, firstname, lastname, message, password, deleteString };
