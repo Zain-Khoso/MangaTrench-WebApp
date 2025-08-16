@@ -1,5 +1,6 @@
 // Lib Imports.
 import { initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
@@ -18,6 +19,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
+// Enabling app-check only on client-side strictly.
+if (typeof window !== 'undefined')
+  initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!),
+    isTokenAutoRefreshEnabled: true,
+  });
 
 // Exports.
 export { auth, firestore };
