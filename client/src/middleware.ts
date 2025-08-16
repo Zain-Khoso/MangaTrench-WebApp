@@ -1,16 +1,48 @@
 // Lib Imports.
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
-export function middleware(request: NextRequest) {
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('custom-pathname', request.nextUrl.pathname);
+// Local Imports.
+import { isProtectedRoute, isGuestOnlyRoute } from './utils';
 
-  return NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
+export async function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+
+  if (isProtectedRoute(pathname)) {
+    const verifyUrl = `${request.nextUrl.origin}/api/cookies/session-verify`;
+
+    const response = await fetch(verifyUrl, {
+      method: 'GET',
+      headers: { cookie: request.headers.get('cookie') || '' },
+    });
+
+    const serverResponse = await response.json();
+
+    if (response.status !== 200 || serverResponse.isValid === false) {
+      const redirectUrl = new URL('/sign-in', request.url);
+      redirectUrl.searchParams.set('redirect', pathname + request.nextUrl.search);
+      return NextResponse.redirect(redirectUrl);
+    }
+  }
+
+  if (isGuestOnlyRoute(pathname)) {
+    const verifyUrl = `${request.nextUrl.origin}/api/cookies/session-verify`;
+
+    const response = await fetch(verifyUrl, {
+      method: 'GET',
+      headers: { cookie: request.headers.get('cookie') || '' },
+    });
+    const serverResponse = await response.json();
+
+    if (
+      response.status === 200 &&
+      serverResponse.success === true &&
+      serverResponse.isValid === true
+    ) {
+      return NextResponse.redirect(new URL('/browse', request.url));
+    }
+  }
+
+  return NextResponse.next();
 }
 
 // Configuring middleware to run on all paths

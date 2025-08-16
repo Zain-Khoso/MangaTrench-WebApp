@@ -7,11 +7,15 @@ import toast from 'react-hot-toast';
 // Utils.
 import { auth } from '@/utils/firebase';
 
+// Hooks.
+import { useSessionCookie } from '@/hooks/useSessionCookie';
+
 // Components.
 import { Button, ButtonLink } from '../shadcn/button';
 
 // This component export action button for the static route group's Navbar.
 export default function NavbarActions() {
+  const _ = useSessionCookie();
   const [user] = useAuthState(auth);
   const [signOut] = useSignOut(auth);
 

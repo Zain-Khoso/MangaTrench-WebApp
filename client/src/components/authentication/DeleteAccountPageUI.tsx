@@ -8,6 +8,9 @@ import toast from 'react-hot-toast';
 // Utils.
 import { auth } from '@/utils/firebase';
 
+// Hooks.
+import { useSessionCookie } from '@/hooks/useSessionCookie';
+
 // Components.
 import { P } from '../shadcn/typography';
 import { Button } from '../shadcn/button';
@@ -18,6 +21,7 @@ import DeleteAccountDialog from './DeleteAccountDialog';
 export default function DeleteAccountPageUI() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const isSessionCookieLoading = useSessionCookie();
   const [deleteUser, isDeletingUser, userDeletionError] = useDeleteUser(auth);
 
   const handleUserDeletion = async function () {
@@ -38,7 +42,7 @@ export default function DeleteAccountPageUI() {
 
   return (
     <>
-      {isDeletingUser ? <Spinner /> : <></>}
+      {isSessionCookieLoading || isDeletingUser ? <Spinner /> : <></>}
 
       <main className="space-y-6 md:w-full md:max-w-sm">
         <P>This action is permanent. All your data will be erased and cannot be recovered.</P>
