@@ -1,3 +1,6 @@
+// Lib Imports.
+import { Suspense } from 'react';
+
 // Components.
 import SignInPageUI from '@/components/authentication/SignInPageUI';
 
@@ -22,5 +25,9 @@ export const metadata: Metadata = {
 
 // This page handles user Sign Ins.
 export default function SignInPage() {
-  return <SignInPageUI />;
+  return (
+    <Suspense>
+      <SignInPageUI />
+    </Suspense>
+  );
 }

@@ -1,6 +1,7 @@
 // Lib Imports.
 import Link from 'next/link';
 import Image from 'next/image';
+import { Suspense } from 'react';
 
 // Assets.
 import BrandLogo from '@/assets/brand/logo.png';
@@ -62,7 +63,9 @@ export default function Navbar() {
 
           <ThemeToggler />
 
-          <NavbarActions />
+          <Suspense>
+            <NavbarActions />
+          </Suspense>
         </div>
       </nav>
     </div>

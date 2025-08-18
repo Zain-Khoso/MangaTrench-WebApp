@@ -1,3 +1,6 @@
+// Lib Imports.
+import { Suspense } from 'react';
+
 // Components.
 import DeleteAccountPageUI from '@/components/authentication/DeleteAccountPageUI';
 
@@ -22,5 +25,9 @@ export const metadata: Metadata = {
 
 // This page handles user Sign Ins.
 export default function SignInPage() {
-  return <DeleteAccountPageUI />;
+  return (
+    <Suspense>
+      <DeleteAccountPageUI />
+    </Suspense>
+  );
 }
