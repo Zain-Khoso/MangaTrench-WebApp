@@ -9,22 +9,21 @@ import { Metadata } from 'next';
 
 // Metadata.
 export const metadata: Metadata = {
-  title: 'Sign In',
+  title: 'Delete Account',
   description:
-    'Sign in to your Manga Trench account to discover trending manga, read reviews, and manage your reading list.',
+    'Permanently delete your Manga Trench account and all associated data, including reviews, bookmarks, and profile information. This action cannot be undone.',
   keywords: [
-    'manga trench sign in',
-    'login manga trench',
-    'manga reviews',
-    'manga platform',
-    'anime manga login',
-    'join manga community',
-    'manga trench account',
+    'delete Manga Trench account',
+    'remove manga account',
+    'delete user profile',
+    'account deletion',
+    'manga reviews account removal',
+    'Manga Trench data removal',
   ],
 };
 
-// This page handles user Sign Ins.
-export default function SignInPage() {
+// This page handles user account deletion.
+export default function DeleteAccountPage() {
   return (
     <Suspense>
       <DeleteAccountPageUI />
