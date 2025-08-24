@@ -4,6 +4,9 @@ import { NextRequest, NextResponse } from 'next/server';
 // Local Imports.
 import { auth } from '@/utils/firebaseAdmin';
 
+// Setting the runtime to Node.js.
+export const runtime = 'nodejs';
+
 export async function POST(request: NextRequest) {
   try {
     const { idToken } = await request.json();

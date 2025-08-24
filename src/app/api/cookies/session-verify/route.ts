@@ -5,6 +5,9 @@ import { cookies } from 'next/headers';
 // Local Imports.
 import { auth } from '@/utils/firebaseAdmin';
 
+// Setting the runtime to Node.js.
+export const runtime = 'nodejs';
+
 export async function GET(_: NextRequest) {
   try {
     const cookieStore = await cookies();
