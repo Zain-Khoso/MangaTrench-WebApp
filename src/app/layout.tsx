@@ -42,7 +42,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body
         className={`${FontNunito.variable} flex min-h-dvh flex-col justify-between gap-8 antialiased`}
       >
+        <SpeedInsights />
+
         <Toast />
+
         {children}
       </body>
     </html>
