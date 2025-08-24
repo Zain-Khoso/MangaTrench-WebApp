@@ -1,4 +1,5 @@
 // Lib Imports.
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Nunito } from 'next/font/google';
 
 // Local Imports.
