@@ -2,7 +2,7 @@
 
 // Lib Imports.
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
 // Components.
 import { P } from '../shadcn/typography';
@@ -12,20 +12,29 @@ import TextHighlight from '../TextHighlight';
 export default function TogglePage() {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const redirectTo = searchParams.get('redirect');
 
   const handleGoBack = () => router.back();
 
   return pathname === '/sign-in' ? (
     <P>
       Don&apos;t have an account yet?{' '}
-      <Link href="/sign-up" className="hover:underline">
+      <Link
+        href={redirectTo ? `/sign-up?redirect=${redirectTo}` : '/sign-up'}
+        className="hover:underline"
+      >
         <TextHighlight>Create One</TextHighlight>
       </Link>
     </P>
   ) : pathname === '/sign-up' ? (
     <P>
       Already have an account?{' '}
-      <Link href="/sign-in" className="hover:underline">
+      <Link
+        href={redirectTo ? `/sign-in?redirect=${redirectTo}` : '/sign-in'}
+        className="hover:underline"
+      >
         <TextHighlight>Sign In</TextHighlight>
       </Link>
     </P>
