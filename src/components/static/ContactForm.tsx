@@ -31,6 +31,8 @@ export default function ContactForm() {
     },
   });
 
+  const formIsSubmitting = form.formState.isSubmitting;
+
   const onSubmit: SubmitHandler<ContactFormSchemaT> = async function (data) {
     const { email, firstname, lastname, message } = data;
 
@@ -119,8 +121,9 @@ export default function ContactForm() {
           )}
         />
 
-        <Button type="submit" className="w-full gap-4">
-          Send Message <FaCircleArrowRight />
+        <Button type="submit" disabled={formIsSubmitting} className="w-full gap-4">
+          {formIsSubmitting ? 'Sending...' : 'Send Message'}
+          <FaCircleArrowRight />
         </Button>
       </form>
     </Form>
