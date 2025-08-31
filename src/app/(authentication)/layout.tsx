@@ -10,7 +10,7 @@ import TogglePage from '@/components/authentication/TogglePage';
 
 // Types.
 import { Metadata } from 'next';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, Suspense } from 'react';
 
 // Metadata.
 export const metadata: Metadata = {
@@ -42,7 +42,9 @@ export default function AuthentucationLayout({ children }: PropsWithChildren) {
 
         <PageLabel />
 
-        <TogglePage />
+        <Suspense>
+          <TogglePage />
+        </Suspense>
       </header>
 
       {children}
