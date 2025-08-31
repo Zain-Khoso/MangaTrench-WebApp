@@ -105,30 +105,30 @@ export default function SignUpForm({ prevStep }: Props) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <div className="relative h-full w-full">
+                <div className="relative h-full w-full">
+                  <FormControl>
                     <Input
                       type={seePassword ? 'text' : 'password'}
                       placeholder="********"
                       {...field}
                       className="pr-8"
                     />
+                  </FormControl>
 
-                    {seePassword ? (
-                      <FaEyeSlash
-                        size={16}
-                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
-                        onClick={togglePassword}
-                      />
-                    ) : (
-                      <FaEye
-                        size={16}
-                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
-                        onClick={togglePassword}
-                      />
-                    )}
-                  </div>
-                </FormControl>
+                  {seePassword ? (
+                    <FaEyeSlash
+                      size={16}
+                      className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                      onClick={togglePassword}
+                    />
+                  ) : (
+                    <FaEye
+                      size={16}
+                      className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                      onClick={togglePassword}
+                    />
+                  )}
+                </div>
                 <FormDescription>
                   Password must at least 8 characters long, and must contain a lowercase and
                   uppercase character, a number and a symbol.
@@ -144,30 +144,30 @@ export default function SignUpForm({ prevStep }: Props) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Confirm Password</FormLabel>
-                <FormControl>
-                  <div className="relative h-full w-full">
+                <div className="relative h-full w-full">
+                  <FormControl>
                     <Input
                       type={seeConfirmPassword ? 'text' : 'password'}
                       placeholder="********"
                       {...field}
                       className="pr-8"
                     />
+                  </FormControl>
 
-                    {seeConfirmPassword ? (
-                      <FaEyeSlash
-                        size={16}
-                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
-                        onClick={toggleConfirmPassword}
-                      />
-                    ) : (
-                      <FaEye
-                        size={16}
-                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
-                        onClick={toggleConfirmPassword}
-                      />
-                    )}
-                  </div>
-                </FormControl>
+                  {seeConfirmPassword ? (
+                    <FaEyeSlash
+                      size={16}
+                      className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                      onClick={toggleConfirmPassword}
+                    />
+                  ) : (
+                    <FaEye
+                      size={16}
+                      className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                      onClick={toggleConfirmPassword}
+                    />
+                  )}
+                </div>
                 <FormMessage />
               </FormItem>
             )}

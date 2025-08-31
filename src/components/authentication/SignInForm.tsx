@@ -104,30 +104,30 @@ export default function SignInForm({ prevStep }: Props) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <div className="relative h-full w-full">
+                <div className="relative h-full w-full">
+                  <FormControl>
                     <Input
                       type={seePassword ? 'text' : 'password'}
                       placeholder="********"
                       {...field}
                       className="pr-8"
                     />
+                  </FormControl>
 
-                    {seePassword ? (
-                      <FaEyeSlash
-                        size={16}
-                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
-                        onClick={togglePassword}
-                      />
-                    ) : (
-                      <FaEye
-                        size={16}
-                        className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
-                        onClick={togglePassword}
-                      />
-                    )}
-                  </div>
-                </FormControl>
+                  {seePassword ? (
+                    <FaEyeSlash
+                      size={16}
+                      className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                      onClick={togglePassword}
+                    />
+                  ) : (
+                    <FaEye
+                      size={16}
+                      className="absolute top-1/2 right-0 -translate-1/2 cursor-pointer opacity-65"
+                      onClick={togglePassword}
+                    />
+                  )}
+                </div>
                 <FormMessage />
               </FormItem>
             )}
